@@ -46,7 +46,7 @@
 
         .shape {
             position: absolute;
-            opacity: 0.08;
+            opacity: 0.4;
         }
 
         /* Top-left rectangle */
@@ -90,7 +90,7 @@
             border-style: solid;
             border-width: 300px 250px 300px 0;
             border-color: transparent rgba(255, 107, 157, 0.5) transparent transparent;
-            animation: float-4 22s infinite;
+            animation: float-4 22s ease-in-out infinite;
             filter: blur(2px);
         }
 
@@ -110,7 +110,7 @@
             background: linear-gradient(180deg, transparent, #98d8c8, transparent);
             transform: rotate(45deg);
             transform-origin: center;
-            animation: pulse-1 8s infinite;
+            animation: pulse-1 8s ease-in-out infinite;
         }
 
         .diagonal-line-2 {
@@ -120,7 +120,7 @@
             background: linear-gradient(180deg, transparent, #ff6b9d, transparent);
             transform: rotate(-45deg);
             transform-origin: center;
-            animation: pulse-2 8s infinite;
+            animation: pulse-2 8s ease-in-out infinite;
         }
 
         /* Small dots pattern */
