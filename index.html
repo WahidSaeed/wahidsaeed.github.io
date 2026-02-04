@@ -265,6 +265,7 @@
                 <div class="line">LinkedIn: <a href="https://linkedin.com/in/wahidsaeed" target="_blank">linkedin.com/in/wahidsaeed</a></div>
                 <div class="line">Portfolio: <a href="https://wahidsaeed.github.io" target="_blank">wahidsaeed.github.io</a></div>
                 <div class="line">GitHub: <a href="https://github.com/wahidsaeed" target="_blank">github.com/wahidsaeed</a></div>
+                <div class="line">Resume: <a href="https://drive.google.com/file/d/1ctzsE1n9nsm-D5jeVK5gcUCISIya90Wt/view?usp=sharing" target="_blank">Download PDF</a></div>
             </div>
 
             <!-- Command Help -->
@@ -276,6 +277,7 @@
                         <div class="line"><span class="cmd">skills</span> - Technical skills</div>
                         <div class="line"><span class="cmd">experience</span> - Work history</div>
                         <div class="line"><span class="cmd">contact</span> - Contact information</div>
+                        <div class="line"><span class="cmd">resume</span> - Download resume PDF</div>
                         <div class="line"><span class="cmd">clear</span> - Clear terminal</div>
                         <div class="line"><span class="cmd">help</span> - Show this message</div>
                     </div>
@@ -371,6 +373,9 @@
             } else if (command === 'email') {
                 window.location.href = 'mailto:wahidsaeed1@outlook.com';
                 addOutput('Opening email client...');
+            } else if (command === 'resume') {
+                window.open('https://drive.google.com/file/d/1ctzsE1n9nsm-D5jeVK5gcUCISIya90Wt/view?usp=sharing', '_blank');
+                addOutput('Opening resume PDF...');
             } else if (command !== '') {
                 addOutput(`Command not found: ${command}. Type 'help' for available commands.`);
             }
