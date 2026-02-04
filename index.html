@@ -469,7 +469,7 @@
             if (e.key === 'Enter') {
                 const command = input.value.trim().toLowerCase();
                 if (command) {
-                    executeCommand(command, true);
+                    executeCommand(command, false);
                     commandHistory.push(command);
                     historyIndex = commandHistory.length;
                 }
