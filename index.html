@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Wahid ~ Terminal Portfolio</title>
+    <title>Abdul Wahid ~ Terminal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --terminal-green: #00ff41;
-            --terminal-bg: #0a0e0a;
-            --terminal-border: #1a3a1a;
-            --glow: 0 0 5px var(--terminal-green), 0 0 10px var(--terminal-green);
-            --shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            --terminal-bg: #0c0c0c;
+            --terminal-dim: #00cc33;
+            --glow: 0 0 5px var(--terminal-green);
         }
 
         * {
@@ -23,85 +22,29 @@
         }
 
         body {
-            font-family: 'Share Tech Mono', monospace;
-            background: radial-gradient(ellipse at center, #1a1a1a 0%, #000000 100%);
+            font-family: 'IBM Plex Mono', monospace;
+            background: #000;
             color: var(--terminal-green);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-x: hidden;
         }
 
         .crt-container {
             position: relative;
             width: 100%;
-            max-width: 1200px;
+            max-width: 900px;
             background: var(--terminal-bg);
-            border: 3px solid var(--terminal-border);
-            border-radius: 12px;
-            box-shadow: 
-                0 0 30px rgba(0, 255, 65, 0.15),
-                inset 0 0 100px rgba(0, 0, 0, 0.9),
-                0 20px 60px rgba(0, 0, 0, 0.7);
-            animation: power-on 2s ease-out;
-        }
-
-        @keyframes power-on {
-            0% {
-                transform: scaleY(0.001) scaleX(1);
-                opacity: 0;
-            }
-            50% {
-                transform: scaleY(0.5) scaleX(1);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scaleY(1) scaleX(1);
-                opacity: 1;
-            }
-        }
-
-        .terminal-header {
-            background: linear-gradient(180deg, #1a3a1a 0%, var(--terminal-bg) 100%);
-            padding: 12px 20px;
-            border-bottom: 2px solid var(--terminal-border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-radius: 9px 9px 0 0;
-        }
-
-        .terminal-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .terminal-button {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 255, 65, 0.3);
-        }
-
-        .terminal-button.close { background: #ff5f56; box-shadow: 0 0 8px #ff5f56; }
-        .terminal-button.minimize { background: #ffbd2e; box-shadow: 0 0 8px #ffbd2e; }
-        .terminal-button.maximize { background: #27c93f; box-shadow: 0 0 8px #27c93f; }
-
-        .terminal-title {
-            font-family: 'VT323', monospace;
-            font-size: 18px;
-            letter-spacing: 2px;
-            text-shadow: var(--glow);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            padding: 40px;
+            box-shadow: 0 0 80px rgba(0, 255, 65, 0.1);
         }
 
         .terminal-body {
-            padding: 30px;
-            min-height: 500px;
             position: relative;
-            overflow-y: auto;
-            max-height: 70vh;
+            line-height: 1.6;
         }
 
         /* Scanline effect */
@@ -114,22 +57,15 @@
             height: 100%;
             background: repeating-linear-gradient(
                 0deg,
-                rgba(0, 255, 65, 0.03) 0px,
+                rgba(0, 0, 0, 0.15) 0px,
                 transparent 1px,
-                transparent 2px,
-                rgba(0, 255, 65, 0.03) 3px
+                transparent 2px
             );
             pointer-events: none;
-            animation: scanline 8s linear infinite;
             z-index: 10;
         }
 
-        @keyframes scanline {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(10px); }
-        }
-
-        /* Flicker effect */
+        /* Subtle flicker */
         .terminal-body::after {
             content: '';
             position: absolute;
@@ -137,171 +73,65 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 255, 65, 0.02);
+            background: rgba(0, 255, 65, 0.03);
             pointer-events: none;
             animation: flicker 0.15s infinite;
             z-index: 11;
         }
 
         @keyframes flicker {
-            0% { opacity: 0.27861; }
-            5% { opacity: 0.34769; }
-            10% { opacity: 0.23604; }
-            15% { opacity: 0.90626; }
-            20% { opacity: 0.18128; }
-            25% { opacity: 0.83891; }
-            30% { opacity: 0.65583; }
-            35% { opacity: 0.67807; }
-            40% { opacity: 0.26559; }
-            45% { opacity: 0.84693; }
-            50% { opacity: 0.96019; }
-            55% { opacity: 0.08594; }
-            60% { opacity: 0.20313; }
-            65% { opacity: 0.71988; }
-            70% { opacity: 0.53455; }
-            75% { opacity: 0.37288; }
-            80% { opacity: 0.71428; }
-            85% { opacity: 0.70419; }
-            90% { opacity: 0.7003; }
-            95% { opacity: 0.36108; }
-            100% { opacity: 0.24387; }
+            0%, 100% { opacity: 0.27; }
+            50% { opacity: 0.1; }
         }
 
         .prompt {
-            color: var(--terminal-green);
-            text-shadow: var(--glow);
+            color: var(--terminal-dim);
         }
 
-        .command {
-            color: #00d9ff;
-            text-shadow: 0 0 5px #00d9ff;
+        .prompt::before {
+            content: '> ';
         }
 
-        .output {
-            margin: 15px 0;
-            line-height: 1.8;
-            animation: type 0.5s steps(40) forwards;
+        .content {
+            margin: 10px 0 30px 0;
             opacity: 0;
-        }
-
-        @keyframes type {
-            to { opacity: 1; }
-        }
-
-        .output:nth-child(1) { animation-delay: 0.1s; }
-        .output:nth-child(2) { animation-delay: 0.2s; }
-        .output:nth-child(3) { animation-delay: 0.3s; }
-        .output:nth-child(4) { animation-delay: 0.4s; }
-        .output:nth-child(5) { animation-delay: 0.5s; }
-
-        .ascii-art {
-            font-family: 'VT323', monospace;
-            font-size: 14px;
-            line-height: 1.2;
-            color: var(--terminal-green);
-            text-shadow: var(--glow);
-            margin: 20px 0;
-            white-space: pre;
-            opacity: 0;
-            animation: fade-in 1s ease-in forwards;
+            animation: fade-in 0.3s ease-in forwards;
         }
 
         @keyframes fade-in {
             to { opacity: 1; }
         }
 
-        .section-title {
-            color: #ffbd2e;
-            font-size: 20px;
-            margin: 25px 0 15px 0;
-            text-shadow: 0 0 8px #ffbd2e;
-            border-bottom: 1px solid rgba(255, 189, 46, 0.3);
-            padding-bottom: 5px;
-            font-family: 'VT323', monospace;
-            letter-spacing: 2px;
+        .content-hidden {
+            display: none;
         }
 
-        .info-line {
-            margin: 8px 0;
-            padding-left: 20px;
+        .line {
+            margin: 5px 0;
         }
 
-        .label {
-            color: #ff5f56;
-            text-shadow: 0 0 5px #ff5f56;
+        .dim {
+            color: var(--terminal-dim);
+            opacity: 0.7;
         }
 
-        .value {
+        a {
             color: var(--terminal-green);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--terminal-green);
         }
 
-        .skill-tag {
-            display: inline-block;
-            background: rgba(0, 255, 65, 0.1);
-            border: 1px solid rgba(0, 255, 65, 0.3);
-            padding: 3px 10px;
-            margin: 3px;
-            border-radius: 3px;
-            font-size: 13px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: rgba(0, 255, 65, 0.2);
-            box-shadow: var(--shadow);
-            transform: translateY(-2px);
-        }
-
-        .experience-item {
-            margin: 20px 0;
-            padding: 15px;
-            border-left: 3px solid rgba(0, 255, 65, 0.3);
-            background: rgba(0, 255, 65, 0.02);
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover {
-            border-left-color: var(--terminal-green);
-            background: rgba(0, 255, 65, 0.05);
-            box-shadow: var(--shadow);
-        }
-
-        .job-title {
-            color: #00d9ff;
-            font-size: 16px;
-            font-weight: bold;
-            text-shadow: 0 0 5px #00d9ff;
-        }
-
-        .company {
-            color: #ffbd2e;
-            font-size: 14px;
-        }
-
-        .date-location {
-            color: #888;
-            font-size: 12px;
-            font-style: italic;
-        }
-
-        .achievement {
-            margin: 5px 0 5px 20px;
-            color: var(--terminal-green);
-        }
-
-        .achievement::before {
-            content: '▸ ';
-            color: #00d9ff;
+        a:hover {
+            text-shadow: var(--glow);
         }
 
         .cursor {
             display: inline-block;
-            width: 10px;
-            height: 18px;
+            width: 8px;
+            height: 16px;
             background: var(--terminal-green);
             animation: blink 1s infinite;
-            margin-left: 5px;
-            box-shadow: var(--glow);
+            margin-left: 2px;
         }
 
         @keyframes blink {
@@ -309,351 +139,261 @@
             51%, 100% { opacity: 0; }
         }
 
-        .command-menu {
+        .input-line {
             margin-top: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        #command-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--terminal-green);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            flex: 1;
+            margin-left: 5px;
+        }
+
+        .command-hint {
+            margin: 20px 0;
             padding: 15px;
-            background: rgba(0, 255, 65, 0.03);
             border: 1px solid rgba(0, 255, 65, 0.2);
-            border-radius: 5px;
+            background: rgba(0, 255, 65, 0.03);
         }
 
-        .menu-item {
-            margin: 8px 0;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            padding: 5px;
+        .command-list {
+            margin-top: 10px;
         }
 
-        .menu-item:hover {
-            color: #00d9ff;
-            text-shadow: 0 0 8px #00d9ff;
-            padding-left: 15px;
+        .cmd {
+            color: var(--terminal-green);
+            font-weight: 500;
         }
 
-        .link {
-            color: #00d9ff;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .link:hover {
-            color: #ffbd2e;
-            text-shadow: 0 0 8px #ffbd2e;
+        .history-line {
+            margin: 5px 0;
+            opacity: 0.6;
         }
 
         @media (max-width: 768px) {
-            .terminal-body {
+            .crt-container {
                 padding: 20px;
-                font-size: 14px;
             }
             
-            .ascii-art {
-                font-size: 10px;
+            body {
+                font-size: 13px;
             }
-            
-            .section-title {
-                font-size: 18px;
-            }
-        }
-
-        /* Scrollbar styling */
-        .terminal-body::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        .terminal-body::-webkit-scrollbar-track {
-            background: var(--terminal-bg);
-        }
-
-        .terminal-body::-webkit-scrollbar-thumb {
-            background: rgba(0, 255, 65, 0.3);
-            border-radius: 5px;
-        }
-
-        .terminal-body::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 255, 65, 0.5);
         }
     </style>
 </head>
 <body>
     <div class="crt-container">
-        <div class="terminal-header">
-            <div class="terminal-buttons">
-                <div class="terminal-button close"></div>
-                <div class="terminal-button minimize"></div>
-                <div class="terminal-button maximize"></div>
-            </div>
-            <div class="terminal-title">wahid@portfolio:~$</div>
-        </div>
-        
         <div class="terminal-body">
-            <div class="output">
-                <span class="prompt">wahid@portfolio</span>:<span class="command">~</span>$ ./welcome.sh
-            </div>
-            
-            <div class="ascii-art">
-    ╔══════════════════════════════════════════════════════════════════╗
-    ║                                                                  ║
-    ║     █████╗ ██████╗ ██████╗ ██╗   ██╗██╗         ██╗    ██╗      ║
-    ║    ██╔══██╗██╔══██╗██╔══██╗██║   ██║██║         ██║    ██║      ║
-    ║    ███████║██████╔╝██║  ██║██║   ██║██║         ██║ █╗ ██║      ║
-    ║    ██╔══██║██╔══██╗██║  ██║██║   ██║██║         ██║███╗██║      ║
-    ║    ██║  ██║██████╔╝██████╔╝╚██████╔╝███████╗    ╚███╔███╔╝      ║
-    ║    ╚═╝  ╚═╝╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝     ╚══╝╚══╝       ║
-    ║                                                                  ║
-    ║              Software Engineer • Algorithm Enthusiast            ║
-    ║                                                                  ║
-    ╚══════════════════════════════════════════════════════════════════╝
+            <div class="line">ABDUL WAHID</div>
+            <div class="line dim">Software Engineer • Berlin, Germany</div>
+            <div class="line dim">wahidsaeed1@outlook.com • +49 15214900609</div>
+            <div class="line dim"><a href="https://linkedin.com/in/wahidsaeed" target="_blank">linkedin.com/in/wahidsaeed</a> • <a href="https://wahidsaeed.github.io" target="_blank">wahidsaeed.github.io</a></div>
+
+            <div style="margin: 30px 0;">
+                <div class="line">Master's student in Computer Science with strong industry experience.</div>
+                <div class="line">Specialized in optimization, algorithms, and data-driven systems.</div>
             </div>
 
-            <div class="output">
-                <span class="prompt">wahid@portfolio</span>:<span class="command">~</span>$ cat about.txt
+            <!-- About Section -->
+            <div id="about-section" class="content content-hidden">
+                <div class="line" style="margin-bottom: 10px;">ABOUT</div>
+                <div class="line">MEng Computer Science @ Gisma University, Berlin (2026 - Present)</div>
+                <div class="line">Bachelor of Computer Science @ Muhammad Ali Jinnah University (2015 - 2019)</div>
+                <div class="line" style="margin-top: 10px;">Languages: Urdu (Native), English (B2), German (B1)</div>
             </div>
 
-            <div class="output">
-                <div class="info-line">
-                    <span class="label">Name:</span> <span class="value">Abdul Wahid</span>
-                </div>
-                <div class="info-line">
-                    <span class="label">Role:</span> <span class="value">Software Engineer</span>
-                </div>
-                <div class="info-line">
-                    <span class="label">Education:</span> <span class="value">MEng Computer Science @ Gisma University (Berlin)</span>
-                </div>
-                <div class="info-line">
-                    <span class="label">Location:</span> <span class="value">Berlin, Germany 🇩🇪</span>
-                </div>
-                <div class="info-line">
-                    <span class="label">Email:</span> <span class="value"><a href="mailto:wahidsaeed1@outlook.com" class="link">wahidsaeed1@outlook.com</a></span>
-                </div>
-                <div class="info-line">
-                    <span class="label">Phone:</span> <span class="value">+49 15214900609</span>
-                </div>
-                <div class="info-line">
-                    <span class="label">LinkedIn:</span> <span class="value"><a href="https://www.linkedin.com/in/wahidsaeed" class="link" target="_blank">linkedin.com/in/wahidsaeed</a></span>
-                </div>
-                <div class="info-line">
-                    <span class="label">Portfolio:</span> <span class="value"><a href="https://wahidsaeed.github.io" class="link" target="_blank">wahidsaeed.github.io</a></span>
-                </div>
-                <div class="info-line">
-                    <span class="label">Summary:</span> <span class="value">Master's student in Computer Science with strong industry experience in software engineering. Passionate about optimization, algorithms, and data-driven systems. Quick learner with international experience across Qatar, UAE, Pakistan, and Germany.</span>
-                </div>
+            <!-- Skills Section -->
+            <div id="skills-section" class="content content-hidden">
+                <div class="line" style="margin-bottom: 10px;">SKILLS</div>
+                <div class="line">Languages: Java, C++, Python, JavaScript, .NET</div>
+                <div class="line">Frameworks: Spring Boot, Next.js, React, Node.js, Angular</div>
+                <div class="line">Databases: Oracle, MySQL, PostgreSQL, MongoDB, MS SQL</div>
+                <div class="line">Cloud: AWS, Azure, Docker, Jenkins, GitLab CI/CD</div>
+                <div class="line">Focus: Algorithm Design, Optimization, ETL, BPM Workflows</div>
             </div>
 
-            <div class="output">
-                <span class="prompt">wahid@portfolio</span>:<span class="command">~</span>$ ls -la skills/
-            </div>
-
-            <div class="output">
-                <div class="section-title">// PROGRAMMING LANGUAGES</div>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">C++</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">.NET Framework</span>
-                <span class="skill-tag">.NET Core</span>
-
-                <div class="section-title">// FRAMEWORKS & TECHNOLOGIES</div>
-                <span class="skill-tag">Spring Boot</span>
-                <span class="skill-tag">Next.js</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">React Native</span>
-                <span class="skill-tag">Angular</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Express.js</span>
-                <span class="skill-tag">GraphQL</span>
-
-                <div class="section-title">// DATABASES</div>
-                <span class="skill-tag">Oracle</span>
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">MongoDB</span>
-                <span class="skill-tag">MS SQL</span>
-
-                <div class="section-title">// CLOUD & DEVOPS</div>
-                <span class="skill-tag">AWS</span>
-                <span class="skill-tag">Azure</span>
-                <span class="skill-tag">Cloudflare</span>
-                <span class="skill-tag">Vercel</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Jenkins</span>
-                <span class="skill-tag">GitLab CI/CD</span>
-
-                <div class="section-title">// SPECIALIZATIONS</div>
-                <span class="skill-tag">Algorithm Design</span>
-                <span class="skill-tag">Optimization</span>
-                <span class="skill-tag">ETL Pipelines</span>
-                <span class="skill-tag">BPM Workflows</span>
-                <span class="skill-tag">Test Automation</span>
-            </div>
-
-            <div class="output">
-                <span class="prompt">wahid@portfolio</span>:<span class="command">~</span>$ cat experience.log
-            </div>
-
-            <div class="output">
-                <div class="experience-item">
-                    <div class="job-title">Software Engineer</div>
-                    <div class="company">Qatar National Bank (via Vistas Global)</div>
-                    <div class="date-location">Jan 2024 - Dec 2025 | Doha, Qatar</div>
-                    <div style="margin-top: 10px;">
-                        <div class="achievement">Developed Python & Java ETL scripts migrating 100,000+ records with 99.8% accuracy</div>
-                        <div class="achievement">Built back-end services for IBM BPM workflows, improving efficiency by 30%</div>
-                        <div class="achievement">Designed 15+ complex business process workflows, reducing manual work by 25%</div>
-                        <div class="achievement">Conducted automated testing using Postman & SoapUI, increasing reliability by 20%</div>
-                        <div class="achievement">Applied optimization techniques for workflow performance enhancement</div>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-title">Software Engineer</div>
-                    <div class="company">UAE Ministry of Defence (via Broombeer Systems)</div>
-                    <div class="date-location">Jul 2023 - Jan 2024 | Abu Dhabi, UAE</div>
-                    <div style="margin-top: 10px;">
-                        <div class="achievement">Led system design & architecture for scalable recruitment management</div>
-                        <div class="achievement">Designed ERD and databases, improving query performance by 30%</div>
-                        <div class="achievement">Implemented core business logic, reducing manual effort by 25%</div>
-                        <div class="achievement">Conducted R&D on AI PhotoBooth with 95% facial detection accuracy using Python & MediaPipe</div>
-                        <div class="achievement">Integrated UAE Pass authentication for secure candidate onboarding</div>
-                        <div class="achievement">Applied algorithmic thinking for candidate verification and system automation</div>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-title">Full Stack Engineer</div>
-                    <div class="company">URent LLC</div>
-                    <div class="date-location">Jun 2022 - Jun 2023 | Dubai, UAE</div>
-                    <div style="margin-top: 10px;">
-                        <div class="achievement">Designed system architecture & ERD for car bidding marketplace</div>
-                        <div class="achievement">Optimized auction & bidding workflows, achieving 20% faster transactions</div>
-                        <div class="achievement">Developed Android & iOS apps using React Native</div>
-                        <div class="achievement">Implemented automated testing with Selenium, Cypress, Jest & Appium</div>
-                        <div class="achievement">Applied algorithmic thinking for bid ranking and auction timing</div>
-                        <div class="achievement">Managed AWS deployments and GitLab version control</div>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-title">Software Engineer</div>
-                    <div class="company">Veripark Software Solutions</div>
-                    <div class="date-location">Feb 2021 - Jun 2022 | Karachi, Pakistan</div>
-                    <div style="margin-top: 10px;">
-                        <div class="achievement">Developed dynamic reports using SSRS & SQL, improving decision-making by 30%</div>
-                        <div class="achievement">Designed workflows & alerts for customer engagement automation</div>
-                        <div class="achievement">Created duplicate detection rules, reducing data errors by 25%</div>
-                        <div class="achievement">Optimized workflow performance using problem-solving techniques</div>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-title">Software Engineer</div>
-                    <div class="company">TPL Corp Ltd</div>
-                    <div class="date-location">Dec 2019 - Sep 2020 | Karachi, Pakistan</div>
-                    <div style="margin-top: 10px;">
-                        <div class="achievement">Integrated payment gateways (Easypaisa & KuickPay) for secure transactions</div>
-                        <div class="achievement">Launched COVID-19 insurance product, accelerating time-to-market by 20%</div>
-                        <div class="achievement">Eliminated system anomalies, improving process reliability by 25%</div>
-                        <div class="achievement">Applied test-driven development & optimization techniques</div>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-title">Software Engineer</div>
-                    <div class="company">BenchMatrix</div>
-                    <div class="date-location">Feb 2015 - Dec 2019 | Karachi, Pakistan</div>
-                    <div style="margin-top: 10px;">
-                        <div class="achievement">Conducted QA & testing, improving workflow reliability by 20%</div>
-                        <div class="achievement">Developed front-end & back-end components for AML compliance system</div>
-                        <div class="achievement">Designed rules-based transaction monitoring algorithms</div>
-                        <div class="achievement">Enhanced system efficiency through R&D and workflow automation</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="output">
-                <span class="prompt">wahid@portfolio</span>:<span class="command">~</span>$ cat education.txt
-            </div>
-
-            <div class="output">
-                <div class="info-line">
-                    <span class="label">🎓 MEng Computer Science</span>
-                </div>
-                <div class="info-line" style="padding-left: 40px;">
-                    <span class="value">Gisma University of Applied Sciences, Berlin, Germany</span>
-                </div>
-                <div class="info-line" style="padding-left: 40px;">
-                    <span class="value">Jan 2026 - Present</span>
-                </div>
-                <div class="info-line" style="padding-left: 40px;">
-                    <span class="value">Focus: Information & Communication Technologies</span>
-                </div>
+            <!-- Experience Section -->
+            <div id="experience-section" class="content content-hidden">
+                <div class="line" style="margin-bottom: 15px;">EXPERIENCE</div>
                 
-                <div class="info-line" style="margin-top: 15px;">
-                    <span class="label">🎓 Bachelor of Computer Science</span>
-                </div>
-                <div class="info-line" style="padding-left: 40px;">
-                    <span class="value">Muhammad Ali Jinnah University, Karachi, Pakistan</span>
-                </div>
-                <div class="info-line" style="padding-left: 40px;">
-                    <span class="value">Nov 2015 - Dec 2019</span>
+                <div class="line" style="margin-bottom: 5px;">Software Engineer • Qatar National Bank</div>
+                <div class="line dim">Jan 2024 - Dec 2025 • Doha, Qatar</div>
+                <div class="line" style="margin-left: 20px;">- ETL migration of 100k+ records, 99.8% accuracy</div>
+                <div class="line" style="margin-left: 20px;">- IBM BPM workflows, 30% efficiency improvement</div>
+                <div class="line" style="margin-left: 20px;">- Automated testing, 20% reliability increase</div>
+
+                <div class="line" style="margin: 15px 0 5px 0;">Software Engineer • UAE Ministry of Defence</div>
+                <div class="line dim">Jul 2023 - Jan 2024 • Abu Dhabi, UAE</div>
+                <div class="line" style="margin-left: 20px;">- Designed recruitment management system</div>
+                <div class="line" style="margin-left: 20px;">- AI PhotoBooth with 95% facial detection accuracy</div>
+                <div class="line" style="margin-left: 20px;">- 30% query performance improvement</div>
+
+                <div class="line" style="margin: 15px 0 5px 0;">Full Stack Engineer • URent LLC</div>
+                <div class="line dim">Jun 2022 - Jun 2023 • Dubai, UAE</div>
+                <div class="line" style="margin-left: 20px;">- Car bidding marketplace with React Native</div>
+                <div class="line" style="margin-left: 20px;">- 20% faster transaction processing</div>
+                <div class="line" style="margin-left: 20px;">- Automated testing suite implementation</div>
+
+                <div class="line" style="margin: 15px 0 5px 0;">Software Engineer • Veripark Software</div>
+                <div class="line dim">Feb 2021 - Jun 2022 • Karachi, Pakistan</div>
+                <div class="line" style="margin-left: 20px;">- CRM workflows & automation</div>
+                <div class="line" style="margin-left: 20px;">- 30% decision-making efficiency improvement</div>
+
+                <div class="line" style="margin: 15px 0 5px 0;">Software Engineer • TPL Corp Ltd</div>
+                <div class="line dim">Dec 2019 - Sep 2020 • Karachi, Pakistan</div>
+                <div class="line" style="margin-left: 20px;">- Payment gateway integrations</div>
+                <div class="line" style="margin-left: 20px;">- COVID-19 insurance product launch</div>
+
+                <div class="line" style="margin: 15px 0 5px 0;">Software Engineer • BenchMatrix</div>
+                <div class="line dim">Feb 2015 - Dec 2019 • Karachi, Pakistan</div>
+                <div class="line" style="margin-left: 20px;">- AML compliance system development</div>
+                <div class="line" style="margin-left: 20px;">- Transaction monitoring algorithms</div>
+            </div>
+
+            <!-- Contact Section -->
+            <div id="contact-section" class="content content-hidden">
+                <div class="line" style="margin-bottom: 10px;">CONTACT</div>
+                <div class="line">Email: <a href="mailto:wahidsaeed1@outlook.com">wahidsaeed1@outlook.com</a></div>
+                <div class="line">Phone: +49 15214900609</div>
+                <div class="line">LinkedIn: <a href="https://linkedin.com/in/wahidsaeed" target="_blank">linkedin.com/in/wahidsaeed</a></div>
+                <div class="line">Portfolio: <a href="https://wahidsaeed.github.io" target="_blank">wahidsaeed.github.io</a></div>
+                <div class="line">GitHub: <a href="https://github.com/wahidsaeed" target="_blank">github.com/wahidsaeed</a></div>
+            </div>
+
+            <!-- Command Help -->
+            <div id="help-section" class="content content-hidden">
+                <div class="command-hint">
+                    <div class="line">Available commands:</div>
+                    <div class="command-list">
+                        <div class="line"><span class="cmd">about</span> - Education & languages</div>
+                        <div class="line"><span class="cmd">skills</span> - Technical skills</div>
+                        <div class="line"><span class="cmd">experience</span> - Work history</div>
+                        <div class="line"><span class="cmd">contact</span> - Contact information</div>
+                        <div class="line"><span class="cmd">clear</span> - Clear terminal</div>
+                        <div class="line"><span class="cmd">help</span> - Show this message</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="output">
-                <span class="prompt">wahid@portfolio</span>:<span class="command">~</span>$ ./languages.sh
-            </div>
+            <!-- Command History -->
+            <div id="history"></div>
 
-            <div class="output">
-                <div class="info-line">
-                    <span class="label">Languages:</span>
-                </div>
-                <div class="info-line" style="padding-left: 30px;">
-                    <span class="skill-tag">Urdu (Native)</span>
-                    <span class="skill-tag">English (B2)</span>
-                    <span class="skill-tag">German (B1)</span>
-                </div>
-            </div>
-
-            <div class="command-menu">
-                <div style="margin-bottom: 15px; color: #ffbd2e; text-shadow: 0 0 8px #ffbd2e;">
-                    Available Commands:
-                </div>
-                <div class="menu-item" onclick="window.open('https://www.linkedin.com/in/wahidsaeed', '_blank')">
-                    → <span class="command">linkedin</span> - Connect on LinkedIn
-                </div>
-                <div class="menu-item" onclick="window.open('https://wahidsaeed.github.io', '_blank')">
-                    → <span class="command">website</span> - Visit portfolio site
-                </div>
-                <div class="menu-item" onclick="window.location.href='mailto:wahidsaeed1@outlook.com'">
-                    → <span class="command">email</span> - Send me an email
-                </div>
-                <div class="menu-item" onclick="window.open('https://github.com/wahidsaeed', '_blank')">
-                    → <span class="command">github</span> - View GitHub profile
-                </div>
-            </div>
-
-            <div class="output" style="margin-top: 30px;">
-                <span class="prompt">wahid@portfolio</span>:<span class="command">~</span>$ <span class="cursor"></span>
+            <!-- Input Line -->
+            <div class="input-line">
+                <span class="prompt"></span>
+                <input type="text" id="command-input" autofocus autocomplete="off" spellcheck="false" />
             </div>
         </div>
     </div>
 
     <script>
-        // Add smooth scroll behavior
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateX(5px)';
-            });
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateX(0)';
-            });
+        const input = document.getElementById('command-input');
+        const history = document.getElementById('history');
+        const sections = {
+            about: document.getElementById('about-section'),
+            skills: document.getElementById('skills-section'),
+            experience: document.getElementById('experience-section'),
+            contact: document.getElementById('contact-section'),
+            help: document.getElementById('help-section')
+        };
+
+        let commandHistory = [];
+        let historyIndex = -1;
+
+        // Show help on load
+        window.addEventListener('load', () => {
+            executeCommand('help', false);
         });
 
-        // Add typing effect to cursor
-        const cursor = document.querySelector('.cursor');
-        setInterval(() => {
-            cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-        }, 500);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const command = input.value.trim().toLowerCase();
+                if (command) {
+                    executeCommand(command, true);
+                    commandHistory.push(command);
+                    historyIndex = commandHistory.length;
+                }
+                input.value = '';
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    input.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    input.value = commandHistory[historyIndex];
+                } else {
+                    historyIndex = commandHistory.length;
+                    input.value = '';
+                }
+            }
+        });
+
+        function executeCommand(command, showInHistory) {
+            // Hide all sections
+            Object.values(sections).forEach(section => {
+                section.classList.add('content-hidden');
+            });
+
+            // Show command in history
+            if (showInHistory) {
+                const historyLine = document.createElement('div');
+                historyLine.className = 'history-line';
+                historyLine.innerHTML = `<span class="prompt"></span>${command}`;
+                history.appendChild(historyLine);
+            }
+
+            // Execute command
+            if (sections[command]) {
+                sections[command].classList.remove('content-hidden');
+                scrollToBottom();
+            } else if (command === 'clear') {
+                history.innerHTML = '';
+                Object.values(sections).forEach(section => {
+                    section.classList.add('content-hidden');
+                });
+            } else if (command === 'linkedin') {
+                window.open('https://linkedin.com/in/wahidsaeed', '_blank');
+                addOutput('Opening LinkedIn profile...');
+            } else if (command === 'github') {
+                window.open('https://github.com/wahidsaeed', '_blank');
+                addOutput('Opening GitHub profile...');
+            } else if (command === 'email') {
+                window.location.href = 'mailto:wahidsaeed1@outlook.com';
+                addOutput('Opening email client...');
+            } else if (command !== '') {
+                addOutput(`Command not found: ${command}. Type 'help' for available commands.`);
+            }
+        }
+
+        function addOutput(text) {
+            const output = document.createElement('div');
+            output.className = 'line dim';
+            output.textContent = text;
+            history.appendChild(output);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            setTimeout(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+            }, 100);
+        }
+
+        // Keep focus on input
+        document.addEventListener('click', () => {
+            input.focus();
+        });
     </script>
 </body>
 </html>
