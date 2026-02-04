@@ -315,6 +315,31 @@
             opacity: 0.6;
         }
 
+        .cmd-clickable {
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 3px 0;
+        }
+
+        .cmd-clickable:hover {
+            color: var(--terminal-green);
+            text-shadow: var(--glow);
+            padding-left: 10px;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 255, 65, 0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--terminal-green);
+            text-shadow: var(--glow);
+        }
+
         @media (max-width: 768px) {
             .crt-container {
                 padding: 20px;
@@ -358,6 +383,7 @@
                 <div class="line">MEng Computer Science @ Gisma University, Berlin (2026 - Present)</div>
                 <div class="line">Bachelor of Computer Science @ Muhammad Ali Jinnah University (2015 - 2019)</div>
                 <div class="line" style="margin-top: 10px;">Languages: Urdu (Native), English (B2), German (B1)</div>
+                <div class="line back-link" onclick="executeCommand('help')">← back</div>
             </div>
 
             <!-- Skills Section -->
@@ -368,6 +394,7 @@
                 <div class="line">Databases: Oracle, MySQL, PostgreSQL, MongoDB, MS SQL</div>
                 <div class="line">Cloud: AWS, Azure, Docker, Jenkins, GitLab CI/CD</div>
                 <div class="line">Focus: Algorithm Design, Optimization, ETL, BPM Workflows</div>
+                <div class="line back-link" onclick="executeCommand('help')">← back</div>
             </div>
 
             <!-- Experience Section -->
@@ -406,6 +433,8 @@
                 <div class="line dim">Feb 2015 - Dec 2019 • Karachi, Pakistan</div>
                 <div class="line" style="margin-left: 20px;">- AML compliance system development</div>
                 <div class="line" style="margin-left: 20px;">- Transaction monitoring algorithms</div>
+                
+                <div class="line back-link" onclick="executeCommand('help')">← back</div>
             </div>
 
             <!-- Contact Section -->
@@ -417,6 +446,7 @@
                 <div class="line">Portfolio: <a href="https://wahidsaeed.github.io" target="_blank">wahidsaeed.github.io</a></div>
                 <div class="line">GitHub: <a href="https://github.com/wahidsaeed" target="_blank">github.com/wahidsaeed</a></div>
                 <div class="line">Resume: <a href="https://drive.google.com/file/d/1ctzsE1n9nsm-D5jeVK5gcUCISIya90Wt/view?usp=sharing" target="_blank">Download PDF</a></div>
+                <div class="line back-link" onclick="executeCommand('help')">← back</div>
             </div>
 
             <!-- Command Help -->
@@ -424,19 +454,15 @@
                 <div class="command-hint">
                     <div class="line">Available commands:</div>
                     <div class="command-list">
-                        <div class="line"><span class="cmd">about</span> - Education & languages</div>
-                        <div class="line"><span class="cmd">skills</span> - Technical skills</div>
-                        <div class="line"><span class="cmd">experience</span> - Work history</div>
-                        <div class="line"><span class="cmd">contact</span> - Contact information</div>
-                        <div class="line"><span class="cmd">resume</span> - Download resume PDF</div>
-                        <div class="line"><span class="cmd">clear</span> - Clear terminal</div>
-                        <div class="line"><span class="cmd">help</span> - Show this message</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('about')"><span class="cmd">about</span> - Education & languages</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('skills')"><span class="cmd">skills</span> - Technical skills</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('experience')"><span class="cmd">experience</span> - Work history</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('contact')"><span class="cmd">contact</span> - Contact information</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('resume')"><span class="cmd">resume</span> - Download resume PDF</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('clear')"><span class="cmd">clear</span> - Clear terminal</div>
                     </div>
                 </div>
             </div>
-
-            <!-- Command History -->
-            <div id="history"></div>
 
             <!-- Input Line -->
             <div class="input-line">
@@ -448,7 +474,6 @@
 
     <script>
         const input = document.getElementById('command-input');
-        const history = document.getElementById('history');
         const sections = {
             about: document.getElementById('about-section'),
             skills: document.getElementById('skills-section'),
@@ -462,14 +487,14 @@
 
         // Show help on load
         window.addEventListener('load', () => {
-            executeCommand('help', false);
+            executeCommand('help');
         });
 
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 const command = input.value.trim().toLowerCase();
                 if (command) {
-                    executeCommand(command, false);
+                    executeCommand(command);
                     commandHistory.push(command);
                     historyIndex = commandHistory.length;
                 }
@@ -492,52 +517,34 @@
             }
         });
 
-        function executeCommand(command, showInHistory) {
+        function executeCommand(command) {
             // Hide all sections
             Object.values(sections).forEach(section => {
                 section.classList.add('content-hidden');
             });
-
-            // Show command in history
-            if (showInHistory) {
-                const historyLine = document.createElement('div');
-                historyLine.className = 'history-line';
-                historyLine.innerHTML = `<span class="prompt"></span>${command}`;
-                history.appendChild(historyLine);
-            }
 
             // Execute command
             if (sections[command]) {
                 sections[command].classList.remove('content-hidden');
                 scrollToBottom();
             } else if (command === 'clear') {
-                history.innerHTML = '';
                 Object.values(sections).forEach(section => {
                     section.classList.add('content-hidden');
                 });
+            } else if (command === 'back') {
+                executeCommand('help');
             } else if (command === 'linkedin') {
                 window.open('https://linkedin.com/in/wahidsaeed', '_blank');
-                addOutput('Opening LinkedIn profile...');
             } else if (command === 'github') {
                 window.open('https://github.com/wahidsaeed', '_blank');
-                addOutput('Opening GitHub profile...');
             } else if (command === 'email') {
                 window.location.href = 'mailto:wahidsaeed1@outlook.com';
-                addOutput('Opening email client...');
             } else if (command === 'resume') {
                 window.open('https://drive.google.com/file/d/1ctzsE1n9nsm-D5jeVK5gcUCISIya90Wt/view?usp=sharing', '_blank');
-                addOutput('Opening resume PDF...');
             } else if (command !== '') {
-                addOutput(`Command not found: ${command}. Type 'help' for available commands.`);
+                // Show help for unknown commands
+                executeCommand('help');
             }
-        }
-
-        function addOutput(text) {
-            const output = document.createElement('div');
-            output.className = 'line dim';
-            output.textContent = text;
-            history.appendChild(output);
-            scrollToBottom();
         }
 
         function scrollToBottom() {
