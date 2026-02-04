@@ -1,6 +1,6 @@
 # Terminal Portfolio Website
 
-A retro CRT terminal-style portfolio website for Abdul Wahid, featuring a distinctive green-on-black aesthetic with authentic terminal effects.
+A Portfolio website for Abdul Wahid, featuring a distinctive green-on-black aesthetic with authentic terminal effects.
 
 ## 🚀 Features
 
