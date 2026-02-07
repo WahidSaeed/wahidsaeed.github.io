@@ -3,7 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Wahid ~ Terminal</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Abdul Wahid - Software Engineer | Java, Python, Full Stack Developer</title>
+    <meta name="title" content="Abdul Wahid - Software Engineer | Java, Python, Full Stack Developer">
+    <meta name="description" content="Abdul Wahid is a Software Engineer based in Berlin with 10+ years of experience in Java, Python, React, Node.js, and cloud technologies. Specialized in optimization, algorithms, and data-driven systems.">
+    <meta name="keywords" content="Abdul Wahid, Software Engineer, Java Developer, Python Developer, Full Stack Developer, React, Node.js, Berlin, AWS, Azure, Software Development, Algorithm Design, ETL, BPM">
+    <meta name="author" content="Abdul Wahid">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wahidsaeed.github.io/">
+    <meta property="og:title" content="Abdul Wahid - Software Engineer | Java, Python, Full Stack Developer">
+    <meta property="og:description" content="Software Engineer based in Berlin with 10+ years of experience in Java, Python, React, Node.js, and cloud technologies. Specialized in optimization and data-driven systems.">
+    <meta property="og:image" content="https://wahidsaeed.github.io/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wahidsaeed.github.io/">
+    <meta property="twitter:title" content="Abdul Wahid - Software Engineer | Java, Python, Full Stack Developer">
+    <meta property="twitter:description" content="Software Engineer based in Berlin with 10+ years of experience in Java, Python, React, Node.js, and cloud technologies.">
+    <meta property="twitter:image" content="https://wahidsaeed.github.io/og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://wahidsaeed.github.io/">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Abdul Wahid",
+      "jobTitle": "Software Engineer",
+      "description": "Master's student in Computer Science with strong industry experience in software engineering. Specialized in optimization, algorithms, and data-driven systems.",
+      "url": "https://wahidsaeed.github.io",
+      "email": "wahidsaeed1@outlook.com",
+      "telephone": "+49-15214900609",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Berlin",
+        "addressCountry": "Germany"
+      },
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "Gisma University of Applied Sciences",
+          "location": "Berlin, Germany"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Muhammad Ali Jinnah University",
+          "location": "Karachi, Pakistan"
+        }
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Qatar National Bank"
+      },
+      "knowsAbout": [
+        "Java", "Python", "JavaScript", "C++", ".NET", "Spring Boot", "React", "Next.js", 
+        "Node.js", "Angular", "AWS", "Azure", "Docker", "Algorithm Design", "Optimization",
+        "ETL", "BPM Workflows", "Full Stack Development"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/wahidsaeed",
+        "https://github.com/wahidsaeed"
+      ]
+    }
+    </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -89,8 +158,9 @@
             height: 0;
             border-style: solid;
             border-width: 300px 250px 300px 0;
-            border-color: transparent rgba(255, 107, 157, 0.5) transparent transparent;
+            border-color: transparent rgba(255, 107, 157, 0.3) transparent transparent;
             animation: float-4 22s ease-in-out infinite;
+            filter: blur(2px);
         }
 
         /* Crossing diagonal lines */
@@ -122,14 +192,73 @@
             animation: pulse-2 8s ease-in-out infinite;
         }
 
-        /* Small dots pattern */
+        /* Small dots pattern with heartbeat wave effect */
         .dots {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: radial-gradient(circle, rgba(0, 255, 65, 0.15) 1px, transparent 1px);
             background-size: 50px 50px;
-            animation: drift 30s linear infinite;
+            animation: heartbeat-wave var(--wave-duration) ease-in-out infinite;
+            --wave-duration: 3s;
+        }
+
+        @keyframes heartbeat-wave {
+            0%, 100% { 
+                background-size: 50px 50px;
+                opacity: 0.3;
+            }
+            50% { 
+                background-size: 70px 70px;
+                opacity: 0.8;
+            }
+        }
+
+        /* Additional dot layers for multi-directional waves */
+        .dots-layer-2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+            background-size: 45px 45px;
+            animation: heartbeat-wave-reverse var(--wave-duration-2) ease-in-out infinite;
+            --wave-duration-2: 4s;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes heartbeat-wave-reverse {
+            0%, 100% { 
+                background-size: 60px 60px;
+                opacity: 0.6;
+            }
+            50% { 
+                background-size: 40px 40px;
+                opacity: 0.2;
+            }
+        }
+
+        .dots-layer-3 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(0, 255, 65, 0.12) 1px, transparent 1px);
+            background-size: 55px 55px;
+            animation: heartbeat-diagonal var(--wave-duration-3) ease-in-out infinite;
+            --wave-duration-3: 2.5s;
+            animation-delay: 1s;
+        }
+
+        @keyframes heartbeat-diagonal {
+            0%, 100% { 
+                background-size: 55px 55px;
+                background-position: 0 0;
+                opacity: 0.4;
+            }
+            50% { 
+                background-size: 75px 75px;
+                background-position: 20px 20px;
+                opacity: 0.7;
+            }
         }
 
         @keyframes float-1 {
@@ -162,11 +291,6 @@
             50% { opacity: 0.12; }
         }
 
-        @keyframes drift {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
         .crt-container {
             position: relative;
             width: 100%;
@@ -181,7 +305,7 @@
         .terminal-body {
             position: relative;
             line-height: 1.6;
-            max-height: 85vh;
+            max-height: 70vh;
             overflow-y: auto;
             overflow-x: hidden;
         }
@@ -246,6 +370,22 @@
         @keyframes flicker {
             0%, 100% { opacity: 0.27; }
             50% { opacity: 0.1; }
+        }
+
+        h1, h2, h3 {
+            font-size: inherit;
+            font-weight: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        header, section, article, nav {
+            display: block;
         }
 
         .prompt {
@@ -381,6 +521,8 @@
     <!-- Animated Background Shapes -->
     <div class="bg-shapes">
         <div class="dots"></div>
+        <div class="dots-layer-2"></div>
+        <div class="dots-layer-3"></div>
         <div class="shape shape-1"></div>
         <div class="shape shape-2"></div>
         <div class="shape shape-3"></div>
@@ -393,107 +535,136 @@
 
     <div class="crt-container">
         <div class="terminal-body">
-            <div class="line">ABDUL WAHID</div>
-            <div class="line dim">Software Engineer • Berlin, Germany</div>
-            <div class="line dim">wahidsaeed1@outlook.com • +49 15214900609</div>
-            <div class="line dim"><a href="https://linkedin.com/in/wahidsaeed" target="_blank">linkedin.com/in/wahidsaeed</a> • <a href="https://wahidsaeed.github.io" target="_blank">wahidsaeed.github.io</a></div>
+            <header>
+                <h1 class="line">ABDUL WAHID</h1>
+                <p class="line dim">Software Engineer • Berlin, Germany</p>
+                <p class="line dim">wahidsaeed1@outlook.com • +49 15214900609</p>
+                <p class="line dim"><a href="https://linkedin.com/in/wahidsaeed" target="_blank" rel="noopener">linkedin.com/in/wahidsaeed</a> • <a href="https://wahidsaeed.github.io" target="_blank" rel="noopener">wahidsaeed.github.io</a></p>
+            </header>
 
-            <div style="margin: 30px 0;">
-                <div class="line">Master's student in Computer Science with strong industry experience.</div>
-                <div class="line">Specialized in optimization, algorithms, and data-driven systems.</div>
-            </div>
+            <section aria-label="Introduction">
+                <div style="margin: 30px 0;">
+                    <p class="line">Master's student in Computer Science with strong industry experience.</p>
+                    <p class="line">Specialized in optimization, algorithms, and data-driven systems.</p>
+                </div>
+            </section>
 
             <!-- About Section -->
-            <div id="about-section" class="content content-hidden">
-                <div class="line" style="margin-bottom: 10px;">ABOUT</div>
-                <div class="line">MEng Computer Science @ Gisma University, Berlin (2026 - Present)</div>
-                <div class="line">Bachelor of Computer Science @ Muhammad Ali Jinnah University (2015 - 2019)</div>
-                <div class="line" style="margin-top: 10px;">Languages: Urdu (Native), English (B2), German (B1)</div>
-                <div class="line back-link" onclick="executeCommand('help')">← back</div>
-            </div>
+            <section id="about-section" class="content content-hidden" aria-labelledby="about-heading">
+                <h2 id="about-heading" class="line" style="margin-bottom: 10px;">ABOUT</h2>
+                <p class="line">MEng Computer Science @ Gisma University, Berlin (2026 - Present)</p>
+                <p class="line">Bachelor of Computer Science @ Muhammad Ali Jinnah University (2015 - 2019)</p>
+                <p class="line" style="margin-top: 10px;">Languages: Urdu (Native), English (B2), German (B1)</p>
+                <div class="line back-link" onclick="executeCommand('help')" role="button" tabindex="0">← back</div>
+            </section>
 
             <!-- Skills Section -->
-            <div id="skills-section" class="content content-hidden">
-                <div class="line" style="margin-bottom: 10px;">SKILLS</div>
-                <div class="line">Languages: Java, C++, Python, JavaScript, .NET</div>
-                <div class="line">Frameworks: Spring Boot, Next.js, React, Node.js, Angular</div>
-                <div class="line">Databases: Oracle, MySQL, PostgreSQL, MongoDB, MS SQL</div>
-                <div class="line">Cloud: AWS, Azure, Docker, Jenkins, GitLab CI/CD</div>
-                <div class="line">Focus: Algorithm Design, Optimization, ETL, BPM Workflows</div>
-                <div class="line back-link" onclick="executeCommand('help')">← back</div>
-            </div>
+            <section id="skills-section" class="content content-hidden" aria-labelledby="skills-heading">
+                <h2 id="skills-heading" class="line" style="margin-bottom: 10px;">SKILLS</h2>
+                <p class="line">Languages: Java, C++, Python, JavaScript, .NET</p>
+                <p class="line">Frameworks: Spring Boot, Next.js, React, Node.js, Angular</p>
+                <p class="line">Databases: Oracle, MySQL, PostgreSQL, MongoDB, MS SQL</p>
+                <p class="line">Cloud: AWS, Azure, Docker, Jenkins, GitLab CI/CD</p>
+                <p class="line">Focus: Algorithm Design, Optimization, ETL, BPM Workflows</p>
+                <div class="line back-link" onclick="executeCommand('help')" role="button" tabindex="0">← back</div>
+            </section>
 
             <!-- Experience Section -->
-            <div id="experience-section" class="content content-hidden">
-                <div class="line" style="margin-bottom: 15px;">EXPERIENCE</div>
+            <section id="experience-section" class="content content-hidden" aria-labelledby="experience-heading">
+                <h2 id="experience-heading" class="line" style="margin-bottom: 15px;">EXPERIENCE</h2>
                 
-                <div class="line" style="margin-bottom: 5px;">Software Engineer • Qatar National Bank</div>
-                <div class="line dim">Jan 2024 - Dec 2025 • Doha, Qatar</div>
-                <div class="line" style="margin-left: 20px;">- ETL migration of 100k+ records, 99.8% accuracy</div>
-                <div class="line" style="margin-left: 20px;">- IBM BPM workflows, 30% efficiency improvement</div>
-                <div class="line" style="margin-left: 20px;">- Automated testing, 20% reliability increase</div>
+                <article>
+                    <h3 class="line" style="margin-bottom: 5px;">Software Engineer • Qatar National Bank</h3>
+                    <p class="line dim">Jan 2024 - Dec 2025 • Doha, Qatar</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="line" style="margin-left: 20px;">- ETL migration of 100k+ records, 99.8% accuracy</li>
+                        <li class="line" style="margin-left: 20px;">- IBM BPM workflows, 30% efficiency improvement</li>
+                        <li class="line" style="margin-left: 20px;">- Automated testing, 20% reliability increase</li>
+                    </ul>
+                </article>
 
-                <div class="line" style="margin: 15px 0 5px 0;">Software Engineer • UAE Ministry of Defence</div>
-                <div class="line dim">Jul 2023 - Jan 2024 • Abu Dhabi, UAE</div>
-                <div class="line" style="margin-left: 20px;">- Designed recruitment management system</div>
-                <div class="line" style="margin-left: 20px;">- AI PhotoBooth with 95% facial detection accuracy</div>
-                <div class="line" style="margin-left: 20px;">- 30% query performance improvement</div>
+                <article>
+                    <h3 class="line" style="margin: 15px 0 5px 0;">Software Engineer • UAE Ministry of Defence</h3>
+                    <p class="line dim">Jul 2023 - Jan 2024 • Abu Dhabi, UAE</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="line" style="margin-left: 20px;">- Designed recruitment management system</li>
+                        <li class="line" style="margin-left: 20px;">- AI PhotoBooth with 95% facial detection accuracy</li>
+                        <li class="line" style="margin-left: 20px;">- 30% query performance improvement</li>
+                    </ul>
+                </article>
 
-                <div class="line" style="margin: 15px 0 5px 0;">Full Stack Engineer • URent LLC</div>
-                <div class="line dim">Jun 2022 - Jun 2023 • Dubai, UAE</div>
-                <div class="line" style="margin-left: 20px;">- Car bidding marketplace with React Native</div>
-                <div class="line" style="margin-left: 20px;">- 20% faster transaction processing</div>
-                <div class="line" style="margin-left: 20px;">- Automated testing suite implementation</div>
+                <article>
+                    <h3 class="line" style="margin: 15px 0 5px 0;">Full Stack Engineer • URent LLC</h3>
+                    <p class="line dim">Jun 2022 - Jun 2023 • Dubai, UAE</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="line" style="margin-left: 20px;">- Car bidding marketplace with React Native</li>
+                        <li class="line" style="margin-left: 20px;">- 20% faster transaction processing</li>
+                        <li class="line" style="margin-left: 20px;">- Automated testing suite implementation</li>
+                    </ul>
+                </article>
 
-                <div class="line" style="margin: 15px 0 5px 0;">Software Engineer • Veripark Software</div>
-                <div class="line dim">Feb 2021 - Jun 2022 • Karachi, Pakistan</div>
-                <div class="line" style="margin-left: 20px;">- CRM workflows & automation</div>
-                <div class="line" style="margin-left: 20px;">- 30% decision-making efficiency improvement</div>
+                <article>
+                    <h3 class="line" style="margin: 15px 0 5px 0;">Software Engineer • Veripark Software</h3>
+                    <p class="line dim">Feb 2021 - Jun 2022 • Karachi, Pakistan</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="line" style="margin-left: 20px;">- CRM workflows & automation</li>
+                        <li class="line" style="margin-left: 20px;">- 30% decision-making efficiency improvement</li>
+                    </ul>
+                </article>
 
-                <div class="line" style="margin: 15px 0 5px 0;">Software Engineer • TPL Corp Ltd</div>
-                <div class="line dim">Dec 2019 - Sep 2020 • Karachi, Pakistan</div>
-                <div class="line" style="margin-left: 20px;">- Payment gateway integrations</div>
-                <div class="line" style="margin-left: 20px;">- COVID-19 insurance product launch</div>
+                <article>
+                    <h3 class="line" style="margin: 15px 0 5px 0;">Software Engineer • TPL Corp Ltd</h3>
+                    <p class="line dim">Dec 2019 - Sep 2020 • Karachi, Pakistan</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="line" style="margin-left: 20px;">- Payment gateway integrations</li>
+                        <li class="line" style="margin-left: 20px;">- COVID-19 insurance product launch</li>
+                    </ul>
+                </article>
 
-                <div class="line" style="margin: 15px 0 5px 0;">Software Engineer • BenchMatrix</div>
-                <div class="line dim">Feb 2015 - Dec 2019 • Karachi, Pakistan</div>
-                <div class="line" style="margin-left: 20px;">- AML compliance system development</div>
-                <div class="line" style="margin-left: 20px;">- Transaction monitoring algorithms</div>
+                <article>
+                    <h3 class="line" style="margin: 15px 0 5px 0;">Software Engineer • BenchMatrix</h3>
+                    <p class="line dim">Feb 2015 - Dec 2019 • Karachi, Pakistan</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="line" style="margin-left: 20px;">- AML compliance system development</li>
+                        <li class="line" style="margin-left: 20px;">- Transaction monitoring algorithms</li>
+                    </ul>
+                </article>
                 
-                <div class="line back-link" onclick="executeCommand('help')">← back</div>
-            </div>
+                <div class="line back-link" onclick="executeCommand('help')" role="button" tabindex="0">← back</div>
+            </section>
 
             <!-- Contact Section -->
-            <div id="contact-section" class="content content-hidden">
-                <div class="line" style="margin-bottom: 10px;">CONTACT</div>
-                <div class="line">Email: <a href="mailto:wahidsaeed1@outlook.com">wahidsaeed1@outlook.com</a></div>
-                <div class="line">Phone: +49 15214900609</div>
-                <div class="line">LinkedIn: <a href="https://linkedin.com/in/wahidsaeed" target="_blank">linkedin.com/in/wahidsaeed</a></div>
-                <div class="line">Portfolio: <a href="https://wahidsaeed.github.io" target="_blank">wahidsaeed.github.io</a></div>
-                <div class="line">GitHub: <a href="https://github.com/wahidsaeed" target="_blank">github.com/wahidsaeed</a></div>
-                <div class="line">Resume: <a href="https://drive.google.com/file/d/1ctzsE1n9nsm-D5jeVK5gcUCISIya90Wt/view?usp=sharing" target="_blank">Download PDF</a></div>
-                <div class="line back-link" onclick="executeCommand('help')">← back</div>
-            </div>
+            <section id="contact-section" class="content content-hidden" aria-labelledby="contact-heading">
+                <h2 id="contact-heading" class="line" style="margin-bottom: 10px;">CONTACT</h2>
+                <p class="line">Email: <a href="mailto:wahidsaeed1@outlook.com">wahidsaeed1@outlook.com</a></p>
+                <p class="line">Phone: +49 15214900609</p>
+                <p class="line">LinkedIn: <a href="https://linkedin.com/in/wahidsaeed" target="_blank" rel="noopener">linkedin.com/in/wahidsaeed</a></p>
+                <p class="line">Portfolio: <a href="https://wahidsaeed.github.io" target="_blank" rel="noopener">wahidsaeed.github.io</a></p>
+                <p class="line">GitHub: <a href="https://github.com/wahidsaeed" target="_blank" rel="noopener">github.com/wahidsaeed</a></p>
+                <p class="line">Resume: <a href="https://drive.google.com/file/d/1ctzsE1n9nsm-D5jeVK5gcUCISIya90Wt/view?usp=sharing" target="_blank" rel="noopener">Download PDF</a></p>
+                <div class="line back-link" onclick="executeCommand('help')" role="button" tabindex="0">← back</div>
+            </section>
 
             <!-- Command Help -->
-            <div id="help-section" class="content content-hidden">
+            <nav id="help-section" class="content content-hidden" aria-label="Site Navigation">
                 <div class="command-hint">
-                    <div class="line">Available commands:</div>
-                    <div class="command-list">
-                        <div class="line cmd-clickable" onclick="executeCommand('about')"><span class="cmd">about</span> - Education & languages</div>
-                        <div class="line cmd-clickable" onclick="executeCommand('skills')"><span class="cmd">skills</span> - Technical skills</div>
-                        <div class="line cmd-clickable" onclick="executeCommand('experience')"><span class="cmd">experience</span> - Work history</div>
-                        <div class="line cmd-clickable" onclick="executeCommand('contact')"><span class="cmd">contact</span> - Contact information</div>
-                        <div class="line cmd-clickable" onclick="executeCommand('resume')"><span class="cmd">resume</span> - Download resume PDF</div>
-                        <div class="line cmd-clickable" onclick="executeCommand('clear')"><span class="cmd">clear</span> - Clear terminal</div>
+                    <p class="line">Available commands:</p>
+                    <div class="command-list" role="menu">
+                        <div class="line cmd-clickable" onclick="executeCommand('about')" role="menuitem" tabindex="0"><span class="cmd">about</span> - Education & languages</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('skills')" role="menuitem" tabindex="0"><span class="cmd">skills</span> - Technical skills</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('experience')" role="menuitem" tabindex="0"><span class="cmd">experience</span> - Work history</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('contact')" role="menuitem" tabindex="0"><span class="cmd">contact</span> - Contact information</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('resume')" role="menuitem" tabindex="0"><span class="cmd">resume</span> - Download resume PDF</div>
+                        <div class="line cmd-clickable" onclick="executeCommand('clear')" role="menuitem" tabindex="0"><span class="cmd">clear</span> - Clear terminal</div>
                     </div>
                 </div>
-            </div>
+            </nav>
 
             <!-- Input Line -->
-            <div class="input-line">
-                <span class="prompt"></span>
-                <input type="text" id="command-input" autofocus autocomplete="off" spellcheck="false" />
+            <div class="input-line" role="search">
+                <label for="command-input" class="prompt" aria-label="Command prompt"></label>
+                <input type="text" id="command-input" autofocus autocomplete="off" spellcheck="false" aria-label="Enter command" />
+            </div>
             </div>
         </div>
     </div>
@@ -586,6 +757,44 @@
         document.addEventListener('click', () => {
             input.focus();
         });
+
+        // Keyboard accessibility for clickable elements
+        document.querySelectorAll('[role="button"], [role="menuitem"]').forEach(element => {
+            element.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    element.click();
+                }
+            });
+        });
+
+        // Randomize heartbeat wave animations
+        function randomizeHeartbeat() {
+            const dots = document.querySelector('.dots');
+            const dots2 = document.querySelector('.dots-layer-2');
+            const dots3 = document.querySelector('.dots-layer-3');
+            
+            // Random duration between 1-5 seconds
+            const duration1 = Math.random() * 4 + 1;
+            const duration2 = Math.random() * 4 + 1;
+            const duration3 = Math.random() * 4 + 1;
+            
+            dots.style.setProperty('--wave-duration', `${duration1}s`);
+            dots2.style.setProperty('--wave-duration-2', `${duration2}s`);
+            dots3.style.setProperty('--wave-duration-3', `${duration3}s`);
+            
+            // Random delay for variation
+            dots.style.animationDelay = `${Math.random() * 2}s`;
+            dots2.style.animationDelay = `${Math.random() * 2}s`;
+            dots3.style.animationDelay = `${Math.random() * 2}s`;
+            
+            // Schedule next randomization
+            const nextChange = Math.random() * 4000 + 1000; // 1-5 seconds
+            setTimeout(randomizeHeartbeat, nextChange);
+        }
+        
+        // Start randomization
+        randomizeHeartbeat();
     </script>
 </body>
 </html>
